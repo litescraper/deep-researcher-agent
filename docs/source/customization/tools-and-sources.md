@@ -11,6 +11,14 @@ the [You.com API Suite](./you-com.md). Knowledge retrieval is configured separat
 Nimble provides configurable web search with lite and deep modes, plus an Enterprise-only fast mode. Refer to the
 [configuration reference](./configuration-reference.md) for its focus, country, and locale controls.
 
+Google Scholar's Serper backend accepts an optional `SERPER_BASE_URL`
+environment variable before process startup. Unset or empty overrides keep
+`https://google.serper.dev`; the `/scholar` route, key header, query parameters,
+and normalization are unchanged. See the [package documentation](https://github.com/NVIDIA-AI-Blueprints/deep-researcher-agent/blob/develop/sources/google_scholar_paper_search/README.md)
+for compatibility requirements. In OpenShell, explicitly allow the selected
+provider host in the deployment network policy as well; the environment
+override alone does not permit new outbound hosts.
+
 ## Data Source Registry
 
 The `data_source_registry` function is the **single source of truth** for which tools exist and which data source they belong to. It controls the UI toggles, per-message filtering, and -- by default -- which tools each agent receives.

@@ -10,6 +10,16 @@ A NeMo Agent Toolkit function that searches for academic papers using Google Sch
 
 All three query Google Scholar and return the same normalized result shape (title, year, snippet, link, publication info, citations), so the agent-facing tool behavior is identical regardless of provider.
 
+For Serper-backed searches, optionally set `SERPER_BASE_URL` before starting
+the process. Supply a base URL without `/scholar`; trailing slashes are removed
+before appending that route. Unset or empty, the base stays `https://google.serper.dev`.
+Use the chosen provider's key as the existing `SERPER_API_KEY`. A compatible
+provider must support the Scholar route and its existing query parameters.
+OpenShell deployments must separately allow the chosen host in their network
+policy; the override does not expand the default outbound allowlist.
+
+Support any Serper.dev-compatible endpoint (like litescrape.com, serpbase.dev, serpensapi.org, and others)
+
 ## Prerequisites
 
 You need an API key for **one** of the supported providers. The default is Serper.

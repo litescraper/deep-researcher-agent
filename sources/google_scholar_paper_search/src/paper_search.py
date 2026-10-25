@@ -22,6 +22,7 @@ into a common shape consumed by ``format_results``.
 import asyncio
 import logging
 import math
+import os
 import re
 from enum import StrEnum
 from typing import Any
@@ -30,7 +31,7 @@ import aiohttp
 
 logger = logging.getLogger(__name__)
 
-SERPER_API_URL = "https://google.serper.dev/scholar"
+SERPER_API_URL = f"{(os.getenv('SERPER_BASE_URL') or 'https://google.serper.dev').rstrip('/')}/scholar"
 SERPAPI_API_URL = "https://serpapi.com/search"
 SEARCHAPI_API_URL = "https://www.searchapi.io/api/v1/search"
 
